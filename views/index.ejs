@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 95vw;
+				height: 95vh;
+				flex-direction: column;
+				overflow: hidden;
+			"
+		>
+			<form
+				style="
+					width: 90%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
+				"
+				name="f1"
+				method="post"
+				action="/price_set"
+			>
+				<h2 style="color: rgb(170, 168, 168); width: 95%; text-align: center">
+					Please click Next to <br />continue the payment process
+				</h2>
+				<input type="text" id="price" name="price" hidden />
+				<button
+					style="
+						width: 100%;
+						max-width: 120px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						background-color: #008cdd;
+						margin-top: 15px;
+						padding-top: 20px;
+						padding-bottom: 20px;
+						color: white;
+						font-size: 18px;
+						border: 0px solid red;
+						border-radius: 10px;
+						margin-left: auto;
+						margin-right: auto;
+					"
+					type="submit"
+				>
+					Next
+				</button>
+			</form>
+		</div>
+		<!-- <h1>Paypal</h1> -->
+	</body>
+</html>
