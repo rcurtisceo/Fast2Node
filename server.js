@@ -11,9 +11,7 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const stripe = require("stripe")(
-  "sk_test_51NJERXGIVwgI2CO5MEddVGtSrjawIPP2YnWE9nEU4lCuHoOFRtjubigWhIA3PYDmKwEDKbL1kvEOd4dvcPuh3qhE00GALjvtVq"
-);
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -27,7 +25,7 @@ app.get("/price_set/:price", async (req, res) => {
       line_items: [
         {
           price_data: {
-            currency: `USD`,
+	  currency: `${process.env.currency}`,
             product_data: {
               name: "Custom Services",
             },
@@ -36,9 +34,8 @@ app.get("/price_set/:price", async (req, res) => {
           quantity: 1,
         },
       ],
-
-      success_url: `http://localhost:4000/success`,
-      cancel_url: `http://localhost:4000/cancel`,
+		success_url: `${process.env.api_url}/success`,
+		cancel_url: `${process.env.api_url}/cancel`,
     });
     res.redirect(session.url);
   } catch (e) {
