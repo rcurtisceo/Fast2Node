@@ -12,6 +12,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+const plaidRoutes = require("./routes/plaidRoutes");
+app.use(express.json());
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -49,6 +51,7 @@ app.get("/success", (req, res) => {
 	
 	res.json({ msg: "success" });
 });
+app.use("/api/plaid", plaidRoutes);
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
 	console.log(`Server is running: http://localhost:${port}`);
